@@ -1,6 +1,6 @@
 package models
 
 type Snake struct {
-	Head int
-	Tail int
+	head int
+	tail int
 }
