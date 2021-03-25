@@ -17,7 +17,7 @@ func NewBoard(maxGridSize int, snake Snake) Board {
 
 func initializeSquare(position int, snake Snake) Square {
 	var square Square
-	if position == snake.head {
+	if position == snake.Head {
 		square = SnakeSquare{Snake: snake}
 	} else {
 		square = RegularSquare{Position: position}

@@ -5,5 +5,5 @@ type SnakeSquare struct {
 }
 
 func (rs SnakeSquare) Shift(moves int) int {
-	return rs.Snake.tail
+	return rs.Snake.Tail
 }

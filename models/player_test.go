@@ -7,7 +7,7 @@ import (
 
 func TestPlayer_ShouldSetCurrentPositionAsFirstSquareOnGameStart(t *testing.T) {
 	player := Player{
-		Board: NewBoard(100, Snake{head: 14, tail: 7}),
+		Board: NewBoard(100, Snake{Head: 14, Tail: 7}),
 	}
 	player.StartGame()
 
@@ -17,7 +17,7 @@ func TestPlayer_ShouldSetCurrentPositionAsFirstSquareOnGameStart(t *testing.T) {
 
 func TestPlayer_ShouldMoveToRelativeSquare(t *testing.T) {
 	player := Player{
-		Board: NewBoard(100, Snake{head: 14, tail: 7}),
+		Board: NewBoard(100, Snake{Head: 14, Tail: 7}),
 	}
 	player.StartGame()
 	player.Move(5)
