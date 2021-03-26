@@ -6,10 +6,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestDice_Throw(t *testing.T) {
+func TestRegularDice_Throw(t *testing.T) {
 	minValue := 1
 	maxValue := 6
-	dice := Dice{MinValue: minValue, MaxValue: maxValue}
+	dice := RegularDice{MinValue: minValue, MaxValue: maxValue}
 	diceValue := dice.Throw()
-	assert.Equal(t, true, diceValue > minValue && diceValue < maxValue)
+	assert.Equal(t, true, diceValue >= minValue && diceValue <= maxValue)
 }
