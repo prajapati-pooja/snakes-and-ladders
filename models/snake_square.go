@@ -1,9 +1,18 @@
 package models
 
 type SnakeSquare struct {
-	Snake Snake
+	snake  Snake
+	player Player
 }
 
-func (rs SnakeSquare) Shift() int {
-	return rs.Snake.Tail
+func (ss *SnakeSquare) getNextPosition() int {
+	return ss.snake.Tail
 }
+
+func (ss *SnakeSquare) enter(player Player) {
+	ss.player = player
+}
+func (ss *SnakeSquare) leave() {
+	ss.player = Player{}
+}
+

@@ -1,8 +1,9 @@
 package models
 
 type Board struct {
-	squares      []Square
-	currentMoves int
+	squares       []Square
+	currentMoves  int
+	currentSquare Square
 }
 
 func NewBoard(maxGridSize int, snake Snake) *Board {
@@ -17,15 +18,22 @@ func NewBoard(maxGridSize int, snake Snake) *Board {
 	return board
 }
 
-
 func (b *Board) firstSquare() Square {
 	return b.squares[0]
 }
 
-func (b *Board) findNextSquare(square Square, moves int) Square {
+func (b *Board) enterInFirstSquare(player Player) {
+	b.currentSquare = b.squares[0]
+	b.currentSquare.enter(player)
+}
+
+func (b *Board) findNextSquare(player Player, moves int) {
 	b.currentMoves = moves
-	nextPosition := square.Shift()
-	return b.squares[nextPosition-1]
+	b.currentSquare.leave()
+	nextPosition := b.currentSquare.getNextPosition()
+	nextSquare := b.squares[nextPosition-1]
+	nextSquare.enter(player)
+	b.currentSquare = nextSquare
 }
 
 func (b *Board) currentMove() int {
