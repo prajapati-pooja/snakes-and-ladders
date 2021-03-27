@@ -22,7 +22,7 @@ func NewBoard(maxGridSize int, snake Snake) *Board {
 	return board
 }
 
-func (b *Board) enterInFirstSquare(player Player) {
+func (b *Board) registerInFirstSquare(player Player) {
 	b.currentSquare = b.squares[0]
 	b.currentSquare.enter(player)
 }
