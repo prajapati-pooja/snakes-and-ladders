@@ -1,8 +1,7 @@
 package models
 
-
 type Player struct {
-	Board    Board
+	Board    *Board
 	Position Square
 }
 

@@ -7,10 +7,11 @@ import (
 
 func TestSquare_Regular(t *testing.T) {
 	regularSquare := RegularSquare{
-		Position: 1,
+		position: 1,
+		board: &Board{currentMoves: 5},
 	}
 
-	actualNextPosition := regularSquare.Shift(5)
+	actualNextPosition := regularSquare.Shift()
 
 	expectedNextPosition := 6
 	assert.Equal(t, expectedNextPosition, actualNextPosition)

@@ -10,7 +10,7 @@ func TestSquare_Snake(t *testing.T) {
 		Snake: Snake{Head: 14, Tail: 8},
 	}
 
-	actualNextPosition := snakeSquare.Shift(5)
+	actualNextPosition := snakeSquare.Shift()
 
 	expectedNextPosition := 8
 	assert.Equal(t, expectedNextPosition, actualNextPosition)

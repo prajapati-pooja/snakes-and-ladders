@@ -1,13 +1,15 @@
 package models
 
 type Square interface {
-	Shift(moves int) int
+	Shift() int
 }
 
 type RegularSquare struct {
-	Position int
+	position int
+	board    *Board
 }
 
-func (rs RegularSquare) Shift(moves int) int {
-	return rs.Position + moves
+func (rs RegularSquare) Shift() int {
+	moves := rs.board.currentMove()
+	return rs.position + moves
 }

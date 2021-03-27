@@ -5,26 +5,12 @@ import (
 	"testing"
 )
 
-func TestBoard_InitializeSquareShouldReturnRegularSquare(t *testing.T) {
-	actualSquare :=  initializeSquare(2, Snake{Head: 14, Tail: 7})
-	expectedSquare := RegularSquare{Position: 2}
-	assert.Equal(t, expectedSquare, actualSquare)
-}
-
-func TestBoard_InitializeSquareShouldReturnSnakeSquare(t *testing.T) {
-	actualSquare :=  initializeSquare(14, Snake{Head: 14, Tail: 7})
-	expectedSquare := SnakeSquare{
-		Snake: Snake{Head: 14, Tail: 7},
-	}
-	assert.Equal(t, expectedSquare, actualSquare)
-}
-
 func TestBoard_FirstSquareShouldReturnFirstSquare(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 
 	actualSquare :=  board.firstSquare()
 
-	expectedSquare := RegularSquare{Position: 1}
+	expectedSquare := RegularSquare{position: 1, board: board}
 	assert.Equal(t, expectedSquare, actualSquare)
 }
 
@@ -33,24 +19,24 @@ func TestBoard_FirstSquareShouldNotReturnOtherSquare(t *testing.T) {
 
 	actualSquare :=  board.firstSquare()
 
-	expectedSquare := RegularSquare{Position: 2}
+	expectedSquare := RegularSquare{position: 2, board: board}
 	assert.NotEqual(t, expectedSquare, actualSquare)
 }
 
 func TestBoard_FindNextSquareShouldReturnRelativeNextSquare(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 
-	firstSquare := RegularSquare{Position: 2}
+	firstSquare := RegularSquare{position: 2, board: board}
 	actualSquare :=  board.findNextSquare(firstSquare, 4)
 
-	expectedSquare := RegularSquare{Position: 6}
+	expectedSquare := RegularSquare{position: 6, board: board}
 	assert.Equal(t, expectedSquare, actualSquare)
 }
 
 func TestBoard_FindNextSquareShouldReturnTailSquare(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 
-	firstSquare := RegularSquare{Position: 10}
+	firstSquare := RegularSquare{position: 10, board: board}
 	actualSquare :=  board.findNextSquare(firstSquare, 4)
 
 	expectedSquare := SnakeSquare{

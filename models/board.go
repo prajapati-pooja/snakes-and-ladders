@@ -1,36 +1,33 @@
 package models
 
 type Board struct {
-	squares []Square
+	squares      []Square
+	currentMoves int
 }
 
-func NewBoard(maxGridSize int, snake Snake) Board {
+func NewBoard(maxGridSize int, snake Snake) *Board {
+	board := &Board{}
 	var position int
 	var squares []Square
 	for position = 1; position <= maxGridSize; position++ {
-		square := initializeSquare(position, snake)
+		square := getSquare(position, snake, board)
 		squares = append(squares, square)
 	}
-
-	return Board{squares: squares}
+	board.squares = squares
+	return board
 }
 
-func initializeSquare(position int, snake Snake) Square {
-	var square Square
-	if position == snake.Head {
-		square = SnakeSquare{Snake: snake}
-	} else {
-		square = RegularSquare{Position: position}
-	}
-	return square
-}
 
-func (b Board) firstSquare() Square {
+func (b *Board) firstSquare() Square {
 	return b.squares[0]
 }
 
-
-func (b Board) findNextSquare(square Square, shifts int) Square {
-	nextPosition := square.Shift(shifts)
+func (b *Board) findNextSquare(square Square, shifts int) Square {
+	b.currentMoves = shifts
+	nextPosition := square.Shift()
 	return b.squares[nextPosition-1]
+}
+
+func (b *Board) currentMove() int {
+	return b.currentMoves
 }

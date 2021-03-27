@@ -4,6 +4,6 @@ type SnakeSquare struct {
 	Snake Snake
 }
 
-func (rs SnakeSquare) Shift(moves int) int {
+func (rs SnakeSquare) Shift() int {
 	return rs.Snake.Tail
 }
