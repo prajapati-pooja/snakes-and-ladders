@@ -20,10 +20,6 @@ func NewBoard(maxGridSize int, snake Snake) *Board {
 	return board
 }
 
-func (b *Board) firstSquare() Square {
-	return b.squares[0]
-}
-
 func (b *Board) enterInFirstSquare(player Player) {
 	b.currentSquare = b.squares[0]
 	b.currentSquare.enter(player)
@@ -42,6 +38,6 @@ func (b *Board) currentMove() int {
 	return b.currentMoves
 }
 
-func (b *Board) String() string {
+func (b *Board)String() string {
 	return fmt.Sprintf("%+v", b.squares)
 }

@@ -5,24 +5,6 @@ import (
 	"testing"
 )
 
-func TestBoard_FirstSquareShouldReturnFirstSquare(t *testing.T) {
-	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
-
-	actualSquare :=  board.firstSquare()
-
-	expectedSquare := &RegularSquare{position: 1, board: board}
-	assert.Equal(t, expectedSquare, actualSquare)
-}
-
-func TestBoard_FirstSquareShouldNotReturnOtherSquare(t *testing.T) {
-	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
-
-	actualSquare :=  board.firstSquare()
-
-	expectedSquare := RegularSquare{position: 2, board: board}
-	assert.NotEqual(t, expectedSquare, actualSquare)
-}
-
 func TestBoard_FindNextSquareShouldReturnRelativeNextSquare(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 	board.currentSquare =  &RegularSquare{position: 2, board: board}
