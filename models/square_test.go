@@ -8,7 +8,7 @@ import (
 func TestSquare_GetNextPositionShouldMoveThePlayerToHighPosition(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
-		board: &Board{currentMoves: 5},
+		board: &Board{currentMove: 5},
 	}
 
 	actualNextPosition := regularSquare.getNextPosition()
@@ -20,7 +20,7 @@ func TestSquare_GetNextPositionShouldMoveThePlayerToHighPosition(t *testing.T) {
 func TestRegularSquare_EnterShouldAssignTheGivenPlayer(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
-		board: &Board{currentMoves: 5},
+		board: &Board{currentMove: 5},
 	}
 
 	regularSquare.enter(Player{Name: "player 1"})
@@ -31,7 +31,7 @@ func TestRegularSquare_EnterShouldAssignTheGivenPlayer(t *testing.T) {
 func TestRegularSquare_LeaveShouldAssignEmptyPlayer(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
-		board: &Board{currentMoves: 5},
+		board: &Board{currentMove: 5},
 	}
 
 	regularSquare.leave()
@@ -42,7 +42,7 @@ func TestRegularSquare_LeaveShouldAssignEmptyPlayer(t *testing.T) {
 func TestRegularSquare_StringShouldFormattedValueWithPlayer(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
-		board: &Board{currentMoves: 5},
+		board: &Board{currentMove: 5},
 		player: Player{Name: "player 1"},
 	}
 
@@ -53,7 +53,7 @@ func TestRegularSquare_StringShouldFormattedValueWithPlayer(t *testing.T) {
 func TestRegularSquare_StringShouldFormattedValueWithoutPlayer(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
-		board: &Board{currentMoves: 5},
+		board: &Board{currentMove: 5},
 	}
 
 	expectedValue := "{position: 1}"

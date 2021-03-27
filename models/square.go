@@ -14,8 +14,8 @@ type RegularSquare struct {
 	player   Player
 }
 
-func (rs RegularSquare) getNextPosition() int {
-	moves := rs.board.currentMove()
+func (rs *RegularSquare) getNextPosition() int {
+	moves := rs.board.getCurrentMove()
 	return rs.position + moves
 }
 

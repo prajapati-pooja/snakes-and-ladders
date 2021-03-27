@@ -9,7 +9,7 @@ func TestBoard_FindNextSquareShouldMoveThePlayerToHighPosition(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 	board.currentSquare =  &RegularSquare{position: 2, board: board}
 	player := Player{Name: "player 1"}
-	board.findNextSquare(player, 4)
+	board.setNextSquare(player, 4)
 
 	expectedSquare := &RegularSquare{position: 6, board: board, player: player}
 	assert.Equal(t, expectedSquare, board.currentSquare)
@@ -21,7 +21,7 @@ func TestBoard_FindNextSquareShouldReturnShouldMoveThePlayerToLowerPosition(t *t
 	board.currentSquare = &RegularSquare{position: 10, board: board}
 	player := Player{Name: "player 1"}
 
-	board.findNextSquare(player, 4)
+	board.setNextSquare(player, 4)
 
 	expectedSquare := &SnakeSquare{
 		position: 14,

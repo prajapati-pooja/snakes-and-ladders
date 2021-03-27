@@ -6,7 +6,7 @@ const GridStartPosition = 1
 
 type Board struct {
 	squares       []Square
-	currentMoves  int
+	currentMove   int
 	currentSquare Square
 }
 
@@ -27,8 +27,8 @@ func (b *Board) registerInFirstSquare(player Player) {
 	b.currentSquare.enter(player)
 }
 
-func (b *Board) findNextSquare(player Player, moves int) {
-	b.currentMoves = moves
+func (b *Board) setNextSquare(player Player, moves int) {
+	b.currentMove = moves
 	b.currentSquare.leave()
 	nextPosition := b.currentSquare.getNextPosition()
 	nextSquare := b.squares[nextPosition-1]
@@ -36,8 +36,8 @@ func (b *Board) findNextSquare(player Player, moves int) {
 	b.currentSquare = nextSquare
 }
 
-func (b *Board) currentMove() int {
-	return b.currentMoves
+func (b *Board) getCurrentMove() int {
+	return b.currentMove
 }
 
 func (b *Board)String() string {

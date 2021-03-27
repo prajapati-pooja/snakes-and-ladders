@@ -20,7 +20,7 @@ func (g Game) Start() {
 
 func (g Game) Play(dice Dice) {
 	moves := dice.Throw()
-	g.board.findNextSquare(g.player, moves)
+	g.board.setNextSquare(g.player, moves)
 }
 
 func (g Game) State() string {
