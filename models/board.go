@@ -22,8 +22,8 @@ func (b *Board) firstSquare() Square {
 	return b.squares[0]
 }
 
-func (b *Board) findNextSquare(square Square, shifts int) Square {
-	b.currentMoves = shifts
+func (b *Board) findNextSquare(square Square, moves int) Square {
+	b.currentMoves = moves
 	nextPosition := square.Shift()
 	return b.squares[nextPosition-1]
 }

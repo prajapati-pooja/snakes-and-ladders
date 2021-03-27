@@ -5,8 +5,8 @@ type Player struct {
 	Position Square
 }
 
-func (p *Player) Move(distance int) {
-	p.Position = p.Board.findNextSquare(p.Position, distance)
+func (p *Player) play(moves int) {
+	p.Position = p.Board.findNextSquare(p.Position, moves)
 }
 
 func (p *Player) StartGame() {

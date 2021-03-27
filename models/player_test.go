@@ -22,7 +22,7 @@ func TestPlayer_ShouldMoveToRelativeSquare(t *testing.T) {
 		Board: board,
 	}
 	player.StartGame()
-	player.Move(5)
+	player.play(5)
 
 	expectedPosition := RegularSquare{position: 6, board: board}
 
