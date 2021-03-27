@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestCrookedDice_ShouldThrowEvenNumbers(t *testing.T) {
+func TestCrookedDice_ShouldThrowEvenNumbersBetween1To6(t *testing.T) {
 	minValue := 1
 	maxValue := 6
 	dice := CrookedDice{MinValue: minValue, MaxValue: maxValue}

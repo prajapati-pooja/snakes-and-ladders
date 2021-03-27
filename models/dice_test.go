@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRegularDice_Throw(t *testing.T) {
+func TestRegularDice_ThrowShouldReturnRandomValueBetween1To6(t *testing.T) {
 	minValue := 1
 	maxValue := 6
 	dice := RegularDice{MinValue: minValue, MaxValue: maxValue}
