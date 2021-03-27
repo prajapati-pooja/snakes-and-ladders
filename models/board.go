@@ -2,6 +2,8 @@ package models
 
 import "fmt"
 
+const GridStartPosition = 1
+
 type Board struct {
 	squares       []Square
 	currentMoves  int
@@ -12,7 +14,7 @@ func NewBoard(maxGridSize int, snake Snake) *Board {
 	board := &Board{}
 	var position int
 	var squares []Square
-	for position = 1; position <= maxGridSize; position++ {
+	for position = GridStartPosition; position <= maxGridSize; position++ {
 		square := getSquare(position, snake, board)
 		squares = append(squares, square)
 	}
