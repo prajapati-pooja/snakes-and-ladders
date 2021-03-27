@@ -38,3 +38,24 @@ func TestRegularSquare_LeaveShouldAssignEmptyPlayer(t *testing.T) {
 	expectedPlayer := Player{}
 	assert.Equal(t, expectedPlayer, regularSquare.player)
 }
+
+func TestRegularSquare_StringShouldFormattedValueWithPlayer(t *testing.T) {
+	regularSquare := RegularSquare{
+		position: 1,
+		board: &Board{currentMoves: 5},
+		player: Player{Name: "player 1"},
+	}
+
+	expectedValue := "{position: 1, player: {Name:player 1}}"
+	assert.Equal(t, expectedValue, regularSquare.String())
+}
+
+func TestRegularSquare_StringShouldFormattedValueWithoutPlayer(t *testing.T) {
+	regularSquare := RegularSquare{
+		position: 1,
+		board: &Board{currentMoves: 5},
+	}
+
+	expectedValue := "{position: 1}"
+	assert.Equal(t, expectedValue, regularSquare.String())
+}

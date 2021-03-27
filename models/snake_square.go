@@ -1,8 +1,11 @@
 package models
 
+import "fmt"
+
 type SnakeSquare struct {
-	snake  Snake
-	player Player
+	position int
+	snake    Snake
+	player   Player
 }
 
 func (ss *SnakeSquare) getNextPosition() int {
@@ -16,3 +19,13 @@ func (ss *SnakeSquare) leave() {
 	ss.player = Player{}
 }
 
+func (ss *SnakeSquare) String() string {
+	if isEmpty(ss.player.Name) {
+		return fmt.Sprintf("{position: %d, snake: %+v}", ss.position, ss.snake)
+	}
+	return fmt.Sprintf("{position: %d, player: %+v, snake: %+v}", ss.position, ss.player, ss.snake)
+}
+
+func isEmpty(playerName string) bool {
+	return playerName == ""
+}

@@ -28,5 +28,8 @@ func (rs *RegularSquare) leave() {
 }
 
 func (rs *RegularSquare) String() string {
-	return fmt.Sprintf("position: %d, %v", rs.position, rs.player)
+	if isEmpty(rs.player.Name) {
+		return fmt.Sprintf("{position: %d}", rs.position)
+	}
+	return fmt.Sprintf("{position: %d, player: %+v}", rs.position, rs.player)
 }

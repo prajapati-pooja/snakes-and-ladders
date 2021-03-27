@@ -37,3 +37,24 @@ func TestSnakeSquare_LeaveShouldAssignTheEmptyPlayer(t *testing.T) {
 	expectedPlayer := Player{}
 	assert.Equal(t, expectedPlayer, snakeSquare.player)
 }
+
+func TestSnakeSquare_StringShouldReturnFormattedValueWithPlayer(t *testing.T) {
+	snakeSquare := SnakeSquare{
+		position: 14,
+		snake: Snake{Head: 14, Tail: 8},
+		player: Player{Name: "player 1"},
+	}
+
+	expectedValue := "{position: 14, player: {Name:player 1}, snake: {Head:14 Tail:8}}"
+	assert.Equal(t, expectedValue, snakeSquare.String())
+}
+
+func TestSnakeSquare_StringShouldReturnFormattedValueWithoutPlayer(t *testing.T) {
+	snakeSquare := SnakeSquare{
+		position: 14,
+		snake: Snake{Head: 14, Tail: 8},
+	}
+
+	expectedValue := "{position: 14, snake: {Head:14 Tail:8}}"
+	assert.Equal(t, expectedValue, snakeSquare.String())
+}

@@ -1,5 +1,7 @@
 package models
 
+import "fmt"
+
 type Board struct {
 	squares       []Square
 	currentMoves  int
@@ -38,4 +40,8 @@ func (b *Board) findNextSquare(player Player, moves int) {
 
 func (b *Board) currentMove() int {
 	return b.currentMoves
+}
+
+func (b *Board) String() string {
+	return fmt.Sprintf("%+v", b.squares)
 }
