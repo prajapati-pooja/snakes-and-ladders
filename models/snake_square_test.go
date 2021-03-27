@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSnakeSquare_ShouldGetNextPosition(t *testing.T) {
+func TestSnakeSquare_GetNextPositionShouldMoveThePlayerToLowerPosition(t *testing.T) {
 	snakeSquare := SnakeSquare{
 		snake: Snake{Head: 14, Tail: 8},
 	}

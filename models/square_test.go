@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestSquare_Regular(t *testing.T) {
+func TestSquare_GetNextPositionShouldMoveThePlayerToHighPosition(t *testing.T) {
 	regularSquare := RegularSquare{
 		position: 1,
 		board: &Board{currentMoves: 5},
