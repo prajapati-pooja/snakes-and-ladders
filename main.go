@@ -25,7 +25,6 @@ func main() {
 
 	crookedDice := models.CrookedDice{MinValue: 1, MaxValue: 6}
 	playWith(crookedDice, game)
-
 }
 
 func playWith(dice models.Dice, game models.Game) {
