@@ -1,9 +1,12 @@
 package models
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Square interface {
-	getNextPosition() int
+	getNextPosition() (int, error)
 	enter(player Player)
 	leave()
 }
@@ -14,9 +17,13 @@ type RegularSquare struct {
 	player   Player
 }
 
-func (rs *RegularSquare) getNextPosition() int {
+func (rs *RegularSquare) getNextPosition() (int, error) {
 	moves := rs.board.getCurrentMove()
-	return rs.position + moves
+	nextPosition := rs.position + moves
+	if nextPosition > MaxGridSize {
+		return 0, errors.New("cant move ahead")
+	}
+	return nextPosition, nil
 }
 
 func (rs *RegularSquare) enter(player Player) {

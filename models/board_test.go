@@ -15,6 +15,16 @@ func TestBoard_FindNextSquareShouldMoveThePlayerToHighPosition(t *testing.T) {
 	assert.Equal(t, expectedSquare, board.currentSquare)
 }
 
+func TestBoard_FindNextSquareShouldNotMoveThePlayerIfNextPositionIsHigherThanGridSize(t *testing.T) {
+	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
+	board.currentSquare =  &RegularSquare{position: 98, board: board}
+	player := Player{Name: "player 1"}
+	board.setNextSquare(player, 4)
+
+	expectedSquare := &RegularSquare{position: 98, board: board}
+	assert.Equal(t, expectedSquare, board.currentSquare)
+}
+
 func TestBoard_FindNextSquareShouldReturnShouldMoveThePlayerToLowerPosition(t *testing.T) {
 	board  := NewBoard(100, Snake{Head: 14, Tail: 7})
 

@@ -10,9 +10,10 @@ func TestSnakeSquare_GetNextPositionShouldMoveThePlayerToLowerPosition(t *testin
 		snake: Snake{Head: 14, Tail: 8},
 	}
 
-	actualNextPosition := snakeSquare.getNextPosition()
+	actualNextPosition, err := snakeSquare.getNextPosition()
 
 	expectedNextPosition := 8
+	assert.Equal(t, err, nil)
 	assert.Equal(t, expectedNextPosition, actualNextPosition)
 }
 

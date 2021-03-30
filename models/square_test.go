@@ -11,9 +11,10 @@ func TestSquare_GetNextPositionShouldMoveThePlayerToHighPosition(t *testing.T) {
 		board: &Board{currentMove: 5},
 	}
 
-	actualNextPosition := regularSquare.getNextPosition()
+	actualNextPosition, err := regularSquare.getNextPosition()
 
 	expectedNextPosition := 6
+	assert.Equal(t, err, nil)
 	assert.Equal(t, expectedNextPosition, actualNextPosition)
 }
 

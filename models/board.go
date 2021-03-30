@@ -29,8 +29,11 @@ func (b *Board) registerInFirstSquare(player Player) {
 
 func (b *Board) setNextSquare(player Player, moves int) {
 	b.currentMove = moves
+	nextPosition, err  := b.currentSquare.getNextPosition()
+	if err != nil {
+		return
+	}
 	b.currentSquare.leave()
-	nextPosition := b.currentSquare.getNextPosition()
 	nextSquare := b.squares[nextPosition-1]
 	nextSquare.enter(player)
 	b.currentSquare = nextSquare

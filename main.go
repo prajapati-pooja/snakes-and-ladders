@@ -2,32 +2,30 @@ package main
 
 import (
 	"fmt"
-	"snakes-and-ladders/models"
+	. "snakes-and-ladders/models"
 )
 
-const MaxRunCount = 10
-
 func main() {
-	snake := models.Snake{
+	snake := Snake{
 		Head: 14,
 		Tail: 8,
 	}
-	board := models.NewBoard(100, snake)
-	player := models.Player{
+	board := NewBoard(MaxGridSize, snake)
+	player := Player{
 		Name: "Player 1",
 	}
 
-	game := models.NewGame(board, player)
+	game := NewGame(board, player)
 	game.Start()
 
-	regularDice := models.RegularDice{MinValue: 1, MaxValue: 6}
+	regularDice := RegularDice{MinValue: MinDiceValue, MaxValue: MaxDiceValue}
 	playWith(regularDice, game)
 
-	crookedDice := models.CrookedDice{MinValue: 1, MaxValue: 6}
+	crookedDice := CrookedDice{MinValue: MinDiceValue, MaxValue: MaxDiceValue}
 	playWith(crookedDice, game)
 }
 
-func playWith(dice models.Dice, game models.Game) {
+func playWith(dice Dice, game Game) {
 	maxRunCount := MaxRunCount
 	runCount := 0
 

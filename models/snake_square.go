@@ -8,8 +8,8 @@ type SnakeSquare struct {
 	player   Player
 }
 
-func (ss *SnakeSquare) getNextPosition() int {
-	return ss.snake.Tail
+func (ss *SnakeSquare) getNextPosition() (int, error) {
+	return ss.snake.Tail, nil
 }
 
 func (ss *SnakeSquare) enter(player Player) {
