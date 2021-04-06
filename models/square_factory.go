@@ -1,11 +1,12 @@
 package models
 
-func getSquare(position int, snake Snake, board *Board)  Square {
-	var square Square
-	if position == snake.Head {
-		square = &SnakeSquare{position: position, snake: snake}
-	} else {
-		square = &RegularSquare{position: position, board: board}
+func getSquare(position int, snake Snake, ladder Ladder)  Square {
+	switch position {
+	case ladder.Bottom:
+		return &LadderSquare{position: position, ladder: ladder}
+	case snake.Head:
+		return &SnakeSquare{position: position, snake: snake}
+	default:
+		return &RegularSquare{position: position}
 	}
-	return square
 }

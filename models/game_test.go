@@ -18,7 +18,7 @@ func TestGame_StartShouldSetTheFirstSquareAsCurrentSquare(t *testing.T) {
 		Head: 7,
 		Tail: 14,
 	}
-	board := NewBoard(100, snake)
+	board := NewBoard(100, snake, Ladder{Top: 35, Bottom: 11})
 	player := Player{
 		Name: "Player 1",
 	}
@@ -28,7 +28,6 @@ func TestGame_StartShouldSetTheFirstSquareAsCurrentSquare(t *testing.T) {
 	game.Start()
 	expectedSquare := &RegularSquare{
 		position: 1,
-		board: board,
 		player:   player,
 	}
 	assert.Equal(t, expectedSquare, game.board.currentSquare)
@@ -39,7 +38,7 @@ func TestGame_PlayShouldUpdateTheCurrentSquareWithNextSquare(t *testing.T) {
 		Head: 7,
 		Tail: 14,
 	}
-	board := NewBoard(100, snake)
+	board := NewBoard(100, snake, Ladder{Top: 35, Bottom: 11})
 	player := Player{
 		Name: "Player 1",
 	}
@@ -50,7 +49,6 @@ func TestGame_PlayShouldUpdateTheCurrentSquareWithNextSquare(t *testing.T) {
 	game.Play(dice)
 	expectedSquare := &RegularSquare{
 		position: 6,
-		board: board,
 		player:   player,
 	}
 	assert.Equal(t, expectedSquare, game.board.currentSquare)

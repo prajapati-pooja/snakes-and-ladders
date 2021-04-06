@@ -10,7 +10,8 @@ func main() {
 		Head: 14,
 		Tail: 8,
 	}
-	board := NewBoard(MaxGridSize, snake)
+	ladder := Ladder{Top: 35, Bottom: 11}
+	board := NewBoard(MaxGridSize, snake, ladder)
 	player := Player{
 		Name: "Player 1",
 	}

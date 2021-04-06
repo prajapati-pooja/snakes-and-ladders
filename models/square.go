@@ -6,19 +6,17 @@ import (
 )
 
 type Square interface {
-	getNextPosition() (int, error)
+	getNextPosition(moves int) (int, error)
 	enter(player Player)
 	leave()
 }
 
 type RegularSquare struct {
 	position int
-	board    *Board
 	player   Player
 }
 
-func (rs *RegularSquare) getNextPosition() (int, error) {
-	moves := rs.board.getCurrentMove()
+func (rs *RegularSquare) getNextPosition(moves int) (int, error) {
 	nextPosition := rs.position + moves
 	if nextPosition > MaxGridSize {
 		return 0, errors.New("cant move ahead")

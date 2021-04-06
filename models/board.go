@@ -10,12 +10,12 @@ type Board struct {
 	currentSquare Square
 }
 
-func NewBoard(maxGridSize int, snake Snake) *Board {
+func NewBoard(maxGridSize int, snake Snake, ladder Ladder) *Board {
 	board := &Board{}
 	var position int
 	var squares []Square
 	for position = GridStartPosition; position <= maxGridSize; position++ {
-		square := getSquare(position, snake, board)
+		square := getSquare(position, snake, ladder)
 		squares = append(squares, square)
 	}
 	board.squares = squares
@@ -29,7 +29,7 @@ func (b *Board) registerInFirstSquare(player Player) {
 
 func (b *Board) setNextSquare(player Player, moves int) {
 	b.currentMove = moves
-	nextPosition, err  := b.currentSquare.getNextPosition()
+	nextPosition, err  := b.currentSquare.getNextPosition(moves)
 	if err != nil {
 		return
 	}
@@ -37,10 +37,6 @@ func (b *Board) setNextSquare(player Player, moves int) {
 	nextSquare := b.squares[nextPosition-1]
 	nextSquare.enter(player)
 	b.currentSquare = nextSquare
-}
-
-func (b *Board) getCurrentMove() int {
-	return b.currentMove
 }
 
 func (b *Board)String() string {
